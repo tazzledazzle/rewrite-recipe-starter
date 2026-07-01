@@ -21,24 +21,24 @@ dependencies {
     api(libs.org.openrewrite.rewrite.templating)
     api(libs.javax.annotation.javax.annotation.api)
     api(libs.org.openrewrite.meta.rewrite.analysis)
+    implementation("com.example.rewritelab:example-toolkit:1.0.0")
     api(libs.org.openrewrite.rewrite.java)
     api(libs.org.openrewrite.rewrite.yaml)
     api(libs.org.openrewrite.rewrite.xml)
     api(libs.org.openrewrite.recipe.rewrite.java.dependencies)
     testImplementation(libs.org.openrewrite.rewrite.test)
-//    testImplementation(libs.org.junit.jupiter.junit.jupiter)
+    testImplementation(libs.org.junit.jupiter.junit.jupiter)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.1.0")
     testImplementation(libs.org.assertj.assertj.core)
     testImplementation(libs.com.google.guava.guava)
     testImplementation(libs.org.apache.commons.commons.lang3)
-//    testImplementation(libs.org.springframework.spring.core)
-//    testImplementation(libs.org.springframework.spring.context)
-//    testAnnotationProcessor("org.projectlombok:lombok")         // <-- critical
+    testAnnotationProcessor(libs.org.projectlombok.lombok)         // <-- critical
     compileOnly(libs.org.projectlombok.lombok)
     implementation(libs.org.projectlombok.lombok)
-//    annotationProcessor("org.projectlombok:lombok")         // <-- critical
+    annotationProcessor(libs.org.projectlombok.lombok)         // <-- critical
     compileOnly(libs.com.google.errorprone.error.prone.core)
     compileOnly(libs.org.openrewrite.rewrite.java.v17)
-    compileOnly(libs.org.openrewrite.rewrite.java.v21)
+    implementation(libs.org.openrewrite.rewrite.java.v21)
     compileOnly(libs.org.openrewrite.rewrite.java.v25)
 }
 
@@ -59,4 +59,8 @@ tasks.withType<JavaCompile>() {
 
 tasks.withType<Javadoc>() {
     options.encoding = "UTF-8"
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
