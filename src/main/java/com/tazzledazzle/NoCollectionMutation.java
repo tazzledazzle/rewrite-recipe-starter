@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import fj.data.Option;
 import lombok.EqualsAndHashCode;
@@ -34,11 +34,19 @@ import org.openrewrite.java.tree.TypeUtils;
 @Value
 @EqualsAndHashCode(callSuper = false)
 public class NoCollectionMutation extends Recipe {
-    String displayName = "Prevent LST collection mutation";
 
-    String description = "LST elements should always be treated as immutable, even for fields that are not protected from mutation at runtime. " +
+    @Override
+
+    public String getDisplayName() {
+        return "Prevent LST collection mutation";
+    }
+
+    @Override
+    public String getDescription() {
+        return "LST elements should always be treated as immutable, even for fields that are not protected from mutation at runtime. " +
                 "Adding or removing an element from a collection on an LST element is always a bug. " +
                 "This recipe uses Dataflow analysis to detect and put defensive copies around collection mutations.";
+    }
 
     private static final MethodMatcher ADD_MATCHER = new MethodMatcher("java.util.List add(..)");
     private static final MethodMatcher ADD_ALL_MATCHER = new MethodMatcher("java.util.List addAll(..)");

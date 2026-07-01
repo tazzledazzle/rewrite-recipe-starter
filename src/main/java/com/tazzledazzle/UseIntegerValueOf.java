@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.Getter;
 import org.openrewrite.Recipe;
@@ -23,9 +23,13 @@ import org.openrewrite.Recipe;
 // You're done when all of the tests in `UseIntegerValueOfTest` pass.
 public class UseIntegerValueOf extends Recipe {
 
-    @Getter
-    final String displayName = "Use Integer.valueOf(x) or Integer.parseInt(x) instead of new Integer(x)";
+@Override
+public final String getDisplayName() {
+    return "Use Integer.valueOf(x) or Integer.parseInt(x) instead of new Integer(x)";
+}
 
-    @Getter
-    final String description = "Replaces unnecessary boxing constructor calls with the more efficient Integer.valueOf(x) for int values, or Integer.parseInt(x) for String values.";
+@Override
+public final String getDescription() {
+    return "Replaces unnecessary boxing constructor calls with the more efficient Integer.valueOf(x) for int values, or Integer.parseInt(x) for String values.";
+}
 }

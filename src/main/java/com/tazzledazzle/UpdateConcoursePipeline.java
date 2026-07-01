@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -25,9 +25,15 @@ import org.openrewrite.yaml.tree.Yaml;
 @Value
 @EqualsAndHashCode(callSuper = false)
 public class UpdateConcoursePipeline extends Recipe {
-    String displayName = "Update concourse pipeline";
+@Override
+public String getDisplayName() {
+    return "Update concourse pipeline";
+}
 
-    String description = "Update the tag filter on concourse pipelines.";
+@Override
+public String getDescription() {
+    return "Update the tag filter on concourse pipelines.";
+}
 
     @Option(displayName = "New tag filter version",
             description = "tag filter version.",

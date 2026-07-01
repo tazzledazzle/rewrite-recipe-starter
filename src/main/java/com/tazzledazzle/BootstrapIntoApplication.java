@@ -1,4 +1,4 @@
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -29,12 +29,20 @@ import static java.util.stream.Collectors.toList;
 @Value
 @EqualsAndHashCode(callSuper = false)
 public class BootstrapIntoApplication extends ScanningRecipe<BootstrapIntoApplication.Accumulator> {
-    String displayName = "Merge Spring bootstrap.yml into application.yml";
+    @Override
+    public String getDisplayName()
 
-    String description = "Merge all contents of any bootstrap.yml file into its corresponding application.yml. " +
-               "Will create an application.yml if none already exists. " +
-               "If an applicaiton.yml already exists and its values conflict with those in bootstrap.yml the values in " +
-               "bootstrap.yml are given priority.";
+    {
+        return "Merge Spring bootstrap.yml into application.yml";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Merge all contents of any bootstrap.yml file into its corresponding application.yml. " +
+                "Will create an application.yml if none already exists. " +
+                "If an applicaiton.yml already exists and its values conflict with those in bootstrap.yml the values in " +
+                "bootstrap.yml are given priority.";
+    }
 
     @Option(displayName = "Delete bootstrap",
             description = "When set to true delete the bootstrap.yml after migrating all its properties to application.yml. Default false.",

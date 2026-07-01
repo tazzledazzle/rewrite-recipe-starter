@@ -1,7 +1,7 @@
-package com.yourorg;
+package com.tazzledazzle;
 
-import com.yourorg.table.TodoCommentsReport;
-import com.yourorg.trait.TodoComment;
+import com.tazzledazzle.table.TodoCommentsReport;
+import com.tazzledazzle.trait.TodoComment;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import org.jspecify.annotations.Nullable;
@@ -23,9 +23,15 @@ public class TrackTodos extends ScanningRecipe<TrackTodos.TodoComments> {
 
     transient TodoCommentsReport todoCommentsTable = new TodoCommentsReport(this);
 
-    String displayName = "Track TODOs from Java, YAML, or XML comments";
+@Override
+public String getDisplayName() {
+    return "Track TODOs from Java, YAML, or XML comments";
+}
 
-    String description = "Scans Java, YAML, and XML source comments for TODOs and collects them.";
+@Override
+public String getDescription() {
+    return "Scans Java, YAML, and XML source comments for TODOs and collects them.";
+}
 
     @Option(displayName = "Header",
             description = "Header for TODO.md. Defaults to `## To Do List` if not provided.",

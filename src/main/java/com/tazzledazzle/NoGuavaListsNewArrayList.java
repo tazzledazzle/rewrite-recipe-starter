@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -36,9 +36,15 @@ public class NoGuavaListsNewArrayList extends Recipe {
     private static final MethodMatcher NEW_ARRAY_LIST_CAPACITY = new MethodMatcher("com.google.common.collect.Lists newArrayListWithCapacity(int)");
     private static final MethodMatcher NEW_ARRAY_LIST_ITERABLE = new MethodMatcher("com.google.common.collect.Lists newArrayList(java.lang.Iterable)");
 
-    String displayName = "Use `new ArrayList<>()` instead of Guava";
+@Override
+public String getDisplayName() {
+    return "Use `new ArrayList<>()` instead of Guava";
+}
 
-    String description = "Prefer the Java standard library over third-party usage of Guava in simple cases like this.";
+@Override
+public String getDescription() {
+    return "Prefer the Java standard library over third-party usage of Guava in simple cases like this.";
+}
 
     @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {

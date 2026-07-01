@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
-import com.yourorg.table.SpringBeansReport;
+import com.tazzledazzle.table.SpringBeansReport;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import org.openrewrite.ExecutionContext;
@@ -33,9 +33,15 @@ public class FindSpringBeans extends Recipe {
 
     transient SpringBeansReport beansTable = new SpringBeansReport(this);
 
-    String displayName = "Find Spring beans";
+@Override
+public String getDisplayName() {
+    return "Find Spring beans";
+}
 
-    String description = "Find all Spring bean names used in your application.";
+@Override
+public String getDescription() {
+    return "Find all Spring bean names used in your application.";
+}
 
     @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {

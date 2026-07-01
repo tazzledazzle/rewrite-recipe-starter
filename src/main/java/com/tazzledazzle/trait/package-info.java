@@ -15,7 +15,7 @@
  */
 @NullMarked
 @NonNullFields
-package com.yourorg.trait;
+package com.tazzledazzle.trait;
 
 import org.jspecify.annotations.NullMarked;
 import org.openrewrite.internal.lang.NonNullFields;

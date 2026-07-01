@@ -1,6 +1,6 @@
-package com.yourorg;
+package com.tazzledazzle;
 
-import com.yourorg.table.TodoCommentsReport;
+import com.tazzledazzle.table.TodoCommentsReport;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openrewrite.DocumentExample;

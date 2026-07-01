@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import org.junit.jupiter.api.Test;
 import org.openrewrite.DocumentExample;
 import org.openrewrite.test.RecipeSpec;
 import org.openrewrite.test.RewriteTest;
-
+import com.tazzledazzle.EqualsAvoidsNull;
 import static org.openrewrite.java.Assertions.java;
 
 class EqualsAvoidsNullTest implements RewriteTest {

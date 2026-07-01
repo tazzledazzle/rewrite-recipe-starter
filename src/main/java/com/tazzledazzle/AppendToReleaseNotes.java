@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -34,9 +34,15 @@ import static java.util.stream.Collectors.toList;
 @EqualsAndHashCode(callSuper = false)
 public class AppendToReleaseNotes extends ScanningRecipe<AppendToReleaseNotes.Accumulator> {
 
-    String displayName = "Append to release notes";
+    @Override
+    public String getDisplayName() {
+        return "Append to release notes";
+    }
 
-    String description = "Adds the specified line to RELEASE.md.";
+    @Override
+    public String getDescription() {
+        return "Adds the specified line to RELEASE.md.";
+    }
 
     @Option(displayName = "Message",
             description = "Message to append to the bottom of RELEASE.md.",

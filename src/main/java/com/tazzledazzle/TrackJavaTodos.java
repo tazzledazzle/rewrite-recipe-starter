@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -33,9 +33,15 @@ import org.openrewrite.java.tree.Space;
 public class TrackJavaTodos extends Recipe {
 
 
-    String displayName = "Export TODOs from Java comments";
+@Override
+public String getDisplayName() {
+    return "Export TODOs from Java comments";
+}
 
-    String description = "Export TODOs from Java source comments into a data table.";
+@Override
+public String getDescription() {
+    return "Export TODOs from Java source comments into a data table.";
+}
 
     @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {

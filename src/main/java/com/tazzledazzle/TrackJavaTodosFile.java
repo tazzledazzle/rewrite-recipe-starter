@@ -1,4 +1,4 @@
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -19,9 +19,16 @@ import static java.util.Collections.emptyList;
 @EqualsAndHashCode(callSuper = false)
 public class TrackJavaTodosFile extends ScanningRecipe<TrackJavaTodosFile.TodoComments> {
 
-    String displayName = "Track TODOs from Java comments";
+    @Override
+    public String getDisplayName()
+    {
+        return "Track TODOs from Java comments";
+    }
 
-    String description = "Scans Java source comments for TODOs and collects them in a file.";
+@Override
+public String getDescription() {
+    return "Scans Java source comments for TODOs and collects them in a file.";
+}
 
     @Option(displayName = "Header",
             description = "Header for TODO.md. Defaults to `## To Do List` if not provided.",

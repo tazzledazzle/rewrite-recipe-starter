@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
-import com.yourorg.table.ClassHierarchyReport;
+import com.tazzledazzle.table.ClassHierarchyReport;
 import lombok.EqualsAndHashCode;
 import lombok.Value;
 import org.openrewrite.ExecutionContext;
@@ -31,9 +31,14 @@ public class ClassHierarchy extends Recipe {
 
     transient ClassHierarchyReport report = new ClassHierarchyReport(this);
 
-    String displayName = "Class hierarchy";
+    public String getDisplayName() {
+        return "Class hierarchy";
+    }
 
-    String description = "Produces a data table showing inheritance relationships between classes.";
+    @Override
+    public String getDescription() {
+        return "Produces a data table showing inheritance relationships between classes.";
+    }
 
     @Override
     public TreeVisitor<?, ExecutionContext> getVisitor() {

@@ -13,37 +13,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openrewrite.DocumentExample;
+import org.openrewrite.java.JavaParser;
 import org.openrewrite.test.RecipeSpec;
 import org.openrewrite.test.RewriteTest;
 
 import static org.openrewrite.java.Assertions.java;
 
-@Disabled("Remove this annotation to run the tests once you implement the recipe")
-class UseIntegerValueOfTest implements RewriteTest {
+class AssertEqualsToAssertThatTest implements RewriteTest {
 
     @Override
     public void defaults(RecipeSpec spec) {
-        spec.recipe(new UseIntegerValueOf());
+        spec.recipe(new AssertEqualsToAssertThat())
+          .parser(JavaParser.fromJavaVersion()
+            .classpath("junit-jupiter-api"));
     }
 
     @DocumentExample
     @Test
-    void replacesNewIntegerWithValueOf() {
+    void twoArgument() {
         rewriteRun(
+          //language=java
           java(
             """
-              class Test {
-                  Integer i = new Integer(42);
+              import org.junit.jupiter.api.Assertions;
+
+              class A {
+                  void foo() {
+                      Assertions.assertEquals(1, 2);
+                  }
               }
               """,
             """
-              class Test {
-                  Integer i = Integer.valueOf(42);
+              import org.assertj.core.api.Assertions;
+
+              class A {
+                  void foo() {
+                      Assertions.assertThat(2).isEqualTo(1);
+                  }
               }
               """
           )
@@ -51,17 +61,26 @@ class UseIntegerValueOfTest implements RewriteTest {
     }
 
     @Test
-    void replacesNewIntegerWithParseInt() {
+    void withDescription() {
         rewriteRun(
+          //language=java
           java(
             """
-              class Test {
-                  Integer i = new Integer("42");
+              import org.junit.jupiter.api.Assertions;
+
+              class A {
+                  void foo() {
+                      Assertions.assertEquals(1, 2, "one equals two, everyone knows that");
+                  }
               }
               """,
             """
-              class Test {
-                  Integer i = Integer.parseInt("42");
+              import org.assertj.core.api.Assertions;
+
+              class A {
+                  void foo() {
+                      Assertions.assertThat(2).as("one equals two, everyone knows that").isEqualTo(1);
+                  }
               }
               """
           )

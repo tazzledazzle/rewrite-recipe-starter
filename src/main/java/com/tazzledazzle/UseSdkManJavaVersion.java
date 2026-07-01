@@ -1,4 +1,4 @@
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.Getter;
 import org.jspecify.annotations.Nullable;
@@ -16,11 +16,16 @@ import static java.util.Collections.singletonList;
 
 public class UseSdkManJavaVersion extends ScanningRecipe<UseSdkManJavaVersion.Accumulator> {
 
-    @Getter
-    final String displayName = "Use SDKMan Java version";
+    @Override
+    public final String getDisplayName() {
 
-    @Getter
-    final String description = "Examines a multi-project build, determines the Java version in use via available markers, and sets up or updates a .sdkmanrc file in the project root.";
+        return "Use SDKMan Java version";
+    }
+
+    @Override
+    public final String getDescription() {
+        return "Examines a multi-project build, determines the Java version in use via available markers, and sets up or updates a .sdkmanrc file in the project root.";
+    }
 
     @Override
     public Accumulator getInitialValue(ExecutionContext ctx) {

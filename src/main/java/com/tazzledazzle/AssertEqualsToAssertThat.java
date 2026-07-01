@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yourorg;
+package com.tazzledazzle;
 
 import lombok.EqualsAndHashCode;
 import lombok.Value;
@@ -34,9 +34,15 @@ import java.util.List;
 @Value
 @EqualsAndHashCode(callSuper = false)
 public class AssertEqualsToAssertThat extends Recipe {
-    String displayName = "JUnit `assertEquals()` to Assertj `assertThat()`";
+    @Override
+    public String getDisplayName() {
+        return "JUnit `assertEquals()` to Assertj `assertThat()`";
+    }
 
-    String description = "Use AssertJ assertThat instead of JUnit assertEquals().";
+    @Override
+    public String getDescription() {
+        return "Use AssertJ assertThat instead of JUnit assertEquals().";
+    }
 
     private static final MethodMatcher MATCHER = new MethodMatcher("org.junit.jupiter.api.Assertions assertEquals(..)");
 

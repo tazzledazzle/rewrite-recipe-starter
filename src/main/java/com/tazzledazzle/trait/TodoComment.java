@@ -1,4 +1,4 @@
-package com.yourorg.trait;
+package com.tazzledazzle.trait;
 
 import lombok.Getter;
 import lombok.Value;

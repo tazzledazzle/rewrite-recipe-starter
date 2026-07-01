@@ -210,7 +210,7 @@
             </plugin>
             <!--
                 Only needed when you want to apply the OpenRewriteBestPractices recipe to your recipes through
-                ./mvnw rewrite:run -Drewrite.activeRecipes=com.yourorg.ApplyRecipeBestPractices
+                ./mvnw rewrite:run -Drewrite.activeRecipes=com.tazzledazzle.ApplyRecipeBestPractices
             -->
             <plugin>
                 <groupId>org.openrewrite.maven</groupId>

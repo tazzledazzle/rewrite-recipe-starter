@@ -8,7 +8,7 @@ To begin, fork this repository and customize it by:
 
 1. Changing the root project name in `settings.gradle.kts`.
 2. Changing the `group` in `build.gradle.kts`.
-3. Changing the package structure from `com.yourorg` to whatever you want.
+3. Changing the package structure from `com.tazzledazzle` to whatever you want.
 
 ## Getting started
 
@@ -22,23 +22,23 @@ available in the OpenRewrite docs that provides more details than the below READ
 ## Reference recipes
 
 * [META-INF/rewrite/stringutils.yml](./src/main/resources/META-INF/rewrite/stringutils.yml) - A declarative YAML recipe that replaces usages of `org.springframework.util.StringUtils` with `org.apache.commons.lang3.StringUtils`.
-  * [UseApacheStringUtilsTest](./src/test/java/com/yourorg/UseApacheStringUtilsTest.java) - A test class for the `com.yourorg.UseApacheStringUtils` recipe.
+  * [UseApacheStringUtilsTest](./src/test/java/com/tazzledazzle/UseApacheStringUtilsTest.java) - A test class for the `com.tazzledazzle.UseApacheStringUtils` recipe.
 * [NoGuavaListsNewArrayList.java](src/main/java/com/tazzledazzle/NoGuavaListsNewArrayList.java) - An imperative Java recipe that replaces usages of `com.google.common.collect.Lists` with `new ArrayList<>()`.
-  * [NoGuavaListsNewArrayListTest.java](./src/test/java/com/yourorg/NoGuavaListsNewArrayListTest.java) - A test class for the `NoGuavaListsNewArrayList` recipe.
+  * [NoGuavaListsNewArrayListTest.java](./src/test/java/com/tazzledazzle/NoGuavaListsNewArrayListTest.java) - A test class for the `NoGuavaListsNewArrayList` recipe.
 * [SimplifyTernary](src/main/java/com/tazzledazzle/SimplifyTernary.java) - An Refaster style recipe that simplifies ternary expressions.
-  * [SimplifyTernaryTest](./src/test/java/com/yourorg/SimplifyTernaryTest.java) - A test class for the `SimplifyTernary` recipe.
+  * [SimplifyTernaryTest](./src/test/java/com/tazzledazzle/SimplifyTernaryTest.java) - A test class for the `SimplifyTernary` recipe.
 * [EqualsAvoidsNull](src/main/java/com/tazzledazzle/EqualsAvoidsNull.java) - A Refaster recipe that ensures `equals()` method calls avoid null pointer exceptions by calling equals on literals, by using `@Matches` on parameters.
-  * [EqualsAvoidsNullTest](./src/test/java/com/yourorg/EqualsAvoidsNullTest.java) - A test class for the `EqualsAvoidsNull` recipe.
+  * [EqualsAvoidsNullTest](./src/test/java/com/tazzledazzle/EqualsAvoidsNullTest.java) - A test class for the `EqualsAvoidsNull` recipe.
 * [AssertEqualsToAssertThat](src/main/java/com/tazzledazzle/AssertEqualsToAssertThat.java) - An imperative Java recipe that replaces JUnit's `assertEquals` with AssertJ's `assertThat`, to show how to handle classpath dependencies.
-  * [AssertEqualsToAssertThatTest](./src/test/java/com/yourorg/AssertEqualsToAssertThatTest.java) - A test class for the `AssertEqualsToAssertThat` recipe.
+  * [AssertEqualsToAssertThatTest](./src/test/java/com/tazzledazzle/AssertEqualsToAssertThatTest.java) - A test class for the `AssertEqualsToAssertThat` recipe.
 * [AppendToReleaseNotes](src/main/java/com/tazzledazzle/AppendToReleaseNotes.java) - A ScanningRecipe that appends a message to the release notes of a project.
-  * [AppendToReleaseNotesTest](./src/test/java/com/yourorg/AppendToReleaseNotesTest.java) - A test class for the `AppendToReleaseNotes` recipe.
+  * [AppendToReleaseNotesTest](./src/test/java/com/tazzledazzle/AppendToReleaseNotesTest.java) - A test class for the `AppendToReleaseNotes` recipe.
 * [FindSpringBeans](src/main/java/com/tazzledazzle/FindSpringBeans.java) - A recipe that demonstrates how to use Traits to produce a data table on Spring `@Bean`s in a project.
-  * [FindSpringBeansTest](./src/test/java/com/yourorg/FindSpringBeansTest.java) - A test class for the `FindSpringBeans` recipe.
+  * [FindSpringBeansTest](./src/test/java/com/tazzledazzle/FindSpringBeansTest.java) - A test class for the `FindSpringBeans` recipe.
 * [ClassHierarchy](src/main/java/com/tazzledazzle/ClassHierarchy.java) - A recipe that demonstrates how to produce a data table on the class hierarchy of a project.
-  * [ClassHierarchyTest](./src/test/java/com/yourorg/ClassHierarchyTest.java) - A test class for the `ClassHierarchy` recipe.
+  * [ClassHierarchyTest](./src/test/java/com/tazzledazzle/ClassHierarchyTest.java) - A test class for the `ClassHierarchy` recipe.
 * [UpdateConcoursePipeline](src/main/java/com/tazzledazzle/UpdateConcoursePipeline.java) - A recipe that demonstrates how to update a Concourse pipeline, as an example of operating on Yaml files.
-  * [UpdateConcoursePipelineTest](./src/test/java/com/yourorg/UpdateConcoursePipelineTest.java) - A test class for the `UpdateConcoursePipeline` recipe.
+  * [UpdateConcoursePipelineTest](./src/test/java/com/tazzledazzle/UpdateConcoursePipelineTest.java) - A test class for the `UpdateConcoursePipeline` recipe.
 
 ## Local Publishing for Testing
 
@@ -64,28 +64,29 @@ Replace the groupId, artifactId, recipe name, and version in the below snippets 
 In the pom.xml of a different project you wish to test your recipe out in, make your recipe module a plugin dependency of rewrite-maven-plugin:
 
 ```xml
+
 <project>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.openrewrite.maven</groupId>
-                <artifactId>rewrite-maven-plugin</artifactId>
-                <version>RELEASE</version>
-                <configuration>
-                    <activeRecipes>
-                        <recipe>com.yourorg.NoGuavaListsNewArrayList</recipe>
-                    </activeRecipes>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.yourorg</groupId>
-                        <artifactId>rewrite-recipe-starter</artifactId>
-                        <version>0.1.0-SNAPSHOT</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.openrewrite.maven</groupId>
+        <artifactId>rewrite-maven-plugin</artifactId>
+        <version>RELEASE</version>
+        <configuration>
+          <activeRecipes>
+            <recipe>com.tazzledazzle.NoGuavaListsNewArrayList</recipe>
+          </activeRecipes>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.tazzledazzlecom.tazzledazzle</groupId>
+            <artifactId>rewrite-recipe-starter</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
 </project>
 ```
 
@@ -104,11 +105,11 @@ repositories {
 }
 
 dependencies {
-    rewrite("com.yourorg:rewrite-recipe-starter:latest.integration")
+    rewrite("com.tazzledazzle:rewrite-recipe-starter:latest.integration")
 }
 
 rewrite {
-    activeRecipe("com.yourorg.NoGuavaListsNewArrayList")
+    activeRecipe("com.tazzledazzle.NoGuavaListsNewArrayList")
 }
 ```
 

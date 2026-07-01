@@ -1,4 +1,4 @@
-package com.yourorg.table;
+package com.tazzledazzle.table;
 
 import lombok.Value;
 import org.openrewrite.Column;
